@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tactico AI - Football Intelligence</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Dynamic Background Elements -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    <div class="grid-overlay"></div>
+
+    <div class="container">
+        <header>
+            <div class="logo">⚽ TACTICO.AI</div>
+            <h1>Unlock the Pitch.</h1>
+            <p class="subtitle">Next-gen performance insights for clubs, agents, journalists, and betting intelligence.
+            </p>
+        </header>
+
+        <main>
+            <!-- Feature 1: Live Analysis -->
+            <div class="card data-card">
+                <h2>Live Match Engine</h2>
+                <div class="stat-display">
+                    <span class="label">Total Matches Indexed</span>
+                    <span class="value" id="total-matches">12,450</span>
+                </div>
+                <div class="live-ticker">
+                    <div class="pulsing-dot"></div>
+                    <span id="current-match">Analyzing: Arsenal vs Liverpool...</span>
+                </div>
+            </div>
+
+            <!-- Feature 2: Player Stats -->
+            <div class="card highlight-card">
+                <h2>Player Spotlight</h2>
+                <div class="player-header">
+                    <div class="player-name">Lamine Yamal</div>
+                    <div class="player-meta">
+                        <span class="pill">🇪🇸 Spain</span>
+                        <span class="pill">17 yo</span>
+                        <span class="pill">FC Barcelona</span>
+                    </div>
+                </div>
+
+                <div class="player-stat-grid">
+                    <div class="stat-item">
+                        <span class="stat-label">xG</span>
+                        <span class="stat-value">0.45</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">xAssists</span>
+                        <span class="stat-value">0.82</span>
+                    </div>
+                </div>
+                <div class="trend-indicator">
+                    <div class="indicator"></div> <span class="status">Market Value Rising</span>
+                </div>
+            </div>
+
+
+            <!-- Feature 3: Business CTA -->
+            <div class="card cta-card">
+                <h2>Eco-System</h2>
+                <p>Empowering decision makers across the industry.</p>
+                <div class="tags">
+                    <span>Scouts</span> • <span>Media</span> • <span>Betting</span>
+                </div>
+                <button>Request Demo</button>
+            </div>
+
+            <!-- Feature 4: Agent Chat Demo (Redesigned) -->
+            <div class="card chat-card">
+                <div class="chat-header">
+                    <div class="chat-title">
+                        <span class="status-dot"></span>
+                        Tactico Scout AI
+                    </div>
+                    <span class="badge-pro">DEMO MODE</span>
+                </div>
+
+                <div class="chat-window" id="chat-output">
+                    <!-- Initial Greeting -->
+                    <div class="message agent">
+                        <div class="bubble">
+                            Hello! I'm Tactico. Ask me about player stats or select a topic below.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Prompts (Meta-style) -->
+                <div class="quick-prompts">
+                    <button class="pill-btn" onclick="sendQuick('Stats: Lamine Yamal')">⚡ Lamine Yamal Stats</button>
+                    <button class="pill-btn" onclick="sendQuick('Compare: Salah vs Saka')">⚖️ Salah vs Saka</button>
+                    <button class="pill-btn" onclick="sendQuick('Scout: Young Strikers')">🔍 Scout Strikers</button>
+                </div>
+
+                <div class="chat-input-area">
+                    <input type="text" id="agent-input" placeholder="Ask about a player..." autocomplete="off">
+                    <button id="send-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

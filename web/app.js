@@ -1,0 +1,94 @@
+// Simulate live data updates to show "performance insight" capabilities
+
+const totalMatchesElement = document.getElementById('total-matches');
+const currentMatchElement = document.getElementById('current-match');
+
+let totalMatches = 12450;
+const potentialMatches = [
+    "Man City vs Liverpool (2024-02-04)",
+    "Real Madrid vs Barcelona (2023-10-28)",
+    "Bayern vs Dortmund (2023-11-04)",
+    "Inter vs Milan (2023-09-16)",
+    "Chelsea vs Arsenal (2023-10-21)",
+    "PSG vs Marseille (2023-09-24)"
+];
+
+function simulateEngine() {
+    // 1. Simulate finding a new match
+    const randomMatch = potentialMatches[Math.floor(Math.random() * potentialMatches.length)];
+    currentMatchElement.innerText = `Analyzing: ${randomMatch}...`;
+
+    // 2. Simulate processing completion after a short delay
+    setTimeout(() => {
+        totalMatches++;
+        totalMatchesElement.innerText = totalMatches.toLocaleString();
+
+        // Flash effect
+        totalMatchesElement.style.color = '#fff';
+        setTimeout(() => totalMatchesElement.style.color = '', 300);
+
+    }, 1500); // Process finishes 1.5s after starting
+}
+
+// Run every 4 seconds
+setInterval(simulateEngine, 4000);
+
+console.log("Tactico AI Engine: Enhanced Mode Online");
+
+/* --- Chat Demo Logic --- */
+const inputField = document.getElementById('agent-input');
+const outputDiv = document.getElementById('chat-output');
+const sendBtn = document.getElementById('send-btn');
+
+function handleSend() {
+    const query = inputField.value;
+    if (!query) return;
+
+    // 1. Display User Message
+    addMessage(query, 'user');
+    inputField.value = '';
+
+    // 2. Simulate Processing Delay (Thinking...)
+    setTimeout(() => {
+        processDemoQuery(query);
+    }, 800);
+}
+
+// Quick Prompt Handler (called from HTML onclick)
+function sendQuick(text) {
+    inputField.value = text;
+    handleSend();
+}
+
+inputField.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSend(); });
+sendBtn.addEventListener('click', handleSend);
+
+function addMessage(text, type) {
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('message', type);
+
+    // Create inner bubble
+    const bubble = document.createElement('div');
+    bubble.classList.add('bubble');
+    // Allow HTML for bolding stats
+    bubble.innerHTML = text.replace(/\n/g, '<br>');
+
+    msgDiv.appendChild(bubble);
+    outputDiv.appendChild(msgDiv);
+    outputDiv.scrollTop = outputDiv.scrollHeight;
+}
+
+function processDemoQuery(input) {
+    const q = input.toLowerCase();
+
+    // Mock Response for Demo
+    if (q.includes("yamal") || q.includes("lamine")) {
+        addMessage("<strong>Lamine Yamal (FCB)</strong><br>• xG/90: 0.35 (Elite)<br>• Value: €150m<br>• Trend: 📈 Rising", 'agent');
+    } else if (q.includes("salah")) {
+        addMessage("<strong>Mo Salah (LIV)</strong><br>• xG/90: 0.75 (World Class)<br>• Value: €55m<br>• Trend: ⚖️ Stable", 'agent');
+    } else if (q.includes("stats") || q.includes("scout")) {
+        addMessage("🔒 <strong>Upgrade Required</strong><br>Deep scouting queries are available in the Enterprise Plan.", 'agent');
+    } else {
+        addMessage("I'm in Demo Mode. Try asking me about <strong>Yamal</strong> or <strong>Salah</strong>.", 'agent');
+    }
+}
