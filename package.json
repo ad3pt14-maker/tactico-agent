@@ -1,0 +1,13 @@
+{
+  "name": "tactico-agent",
+  "version": "1.0.0",
+  "description": "Tactico AI Scouting Agent",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": ["ai", "football", "agent"],
+  "author": "Tactico PM",
+  "license": "ISC"
+}
