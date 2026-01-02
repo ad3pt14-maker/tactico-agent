@@ -24,6 +24,44 @@
         </header>
 
         <main>
+            <!-- Feature 4: Agent Chat Demo (Redesigned) -->
+            <div class="card chat-card">
+                <div class="chat-header">
+                    <div class="chat-title">
+                        <span class="status-dot"></span>
+                        Tactico Scout AI
+                    </div>
+                    <span class="badge-pro">DEMO MODE</span>
+                </div>
+
+                <div class="chat-window" id="chat-output">
+                    <!-- Initial Greeting -->
+                    <div class="message agent">
+                        <div class="bubble">
+                            Hello! I'm Tactico. Ask me about player stats or select a topic below.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Prompts (Meta-style) -->
+                <div class="quick-prompts">
+                    <button class="pill-btn" onclick="sendQuick('Stats: Lamine Yamal')">⚡ Lamine Yamal Stats</button>
+                    <button class="pill-btn" onclick="sendQuick('Compare: Salah vs Saka')">⚖️ Salah vs Saka</button>
+                    <button class="pill-btn" onclick="sendQuick('Scout: Young Strikers')">🔍 Scout Strikers</button>
+                </div>
+
+                <div class="chat-input-area">
+                    <input type="text" id="agent-input" placeholder="Ask about a player..." autocomplete="off">
+                    <button id="send-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
             <!-- Feature 1: Live Analysis -->
             <div class="card data-card">
                 <h2>Live Match Engine</h2>
@@ -73,44 +111,6 @@
                     <span>Scouts</span> • <span>Media</span> • <span>Betting</span>
                 </div>
                 <button>Request Demo</button>
-            </div>
-
-            <!-- Feature 4: Agent Chat Demo (Redesigned) -->
-            <div class="card chat-card">
-                <div class="chat-header">
-                    <div class="chat-title">
-                        <span class="status-dot"></span>
-                        Tactico Scout AI
-                    </div>
-                    <span class="badge-pro">DEMO MODE</span>
-                </div>
-
-                <div class="chat-window" id="chat-output">
-                    <!-- Initial Greeting -->
-                    <div class="message agent">
-                        <div class="bubble">
-                            Hello! I'm Tactico. Ask me about player stats or select a topic below.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Quick Prompts (Meta-style) -->
-                <div class="quick-prompts">
-                    <button class="pill-btn" onclick="sendQuick('Stats: Lamine Yamal')">⚡ Lamine Yamal Stats</button>
-                    <button class="pill-btn" onclick="sendQuick('Compare: Salah vs Saka')">⚖️ Salah vs Saka</button>
-                    <button class="pill-btn" onclick="sendQuick('Scout: Young Strikers')">🔍 Scout Strikers</button>
-                </div>
-
-                <div class="chat-input-area">
-                    <input type="text" id="agent-input" placeholder="Ask about a player..." autocomplete="off">
-                    <button id="send-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <line x1="22" y1="2" x2="11" y2="13"></line>
-                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                        </svg>
-                    </button>
-                </div>
             </div>
         </main>
     </div>
