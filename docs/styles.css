@@ -297,6 +297,8 @@ body {
     flex-direction: column;
     height: 400px;
     /* Taller for chat */
+    order: -1;
+    /* FORCE to top visually */
 }
 
 .chat-header {
