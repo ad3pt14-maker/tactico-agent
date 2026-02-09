@@ -1,7 +1,14 @@
 /**
  * Tactico AI - Browser Agent Logic (AI-Powered)
- * Sends natural language queries to the Backend (Gemini) and displays the response.
+ * Sends natural language queries to the Backend and displays the response.
  */
+
+// API base URL - change this when deploying
+// For local: leave empty (uses relative /api/agent)
+// For GitHub Pages: set to your tunnel/server URL
+const API_BASE_URL = window.location.hostname === 'localhost'
+    ? ''
+    : 'https://kind-shoes-worry.loca.lt';
 
 class TacticoAgent {
     constructor() {
@@ -13,7 +20,7 @@ class TacticoAgent {
         console.log(`\n🤖 TACTICO THINKING (AI): "${query}"`);
 
         try {
-            const response = await fetch('/api/agent', {
+            const response = await fetch(`${API_BASE_URL}/api/agent`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ query: query })

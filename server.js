@@ -21,26 +21,26 @@ app.use(express.static(path.join(__dirname, 'docs')));
 
 // --- Database & AI Services ---
 import { searchPlayerByName, searchPlayersByTags } from './services/mock_database.js';
-// Lazy load Gemini to avoid crash if API Key is missing during startup check
-let geminiService = null;
+// Lazy load AI service to avoid crash if API Key is missing during startup check
+let aiService = null;
 try {
-    const { geminiService: service } = await import('./services/gemini.js');
-    geminiService = service;
+    const { openRouterService } = await import('./services/openrouter.js');
+    aiService = openRouterService;
 } catch (e) {
-    console.warn("⚠️ Gemini Service could not be loaded (likely missing API Key). Agent endpoint will fail.");
+    console.warn("⚠️ OpenRouter Service could not be loaded (likely missing API Key). Agent endpoint will fail.");
 }
 
 // Health Check Endpoint
 app.get('/api/health', (req, res) => {
-    res.json({ 
-        status: 'ok', 
-        services: { 
-            gemini: !!geminiService 
-        } 
+    res.json({
+        status: 'ok',
+        services: {
+            openrouter: !!aiService
+        }
     });
 });
 
-// Agent Endpoint (Gemini Proxy)
+// Agent Endpoint (OpenRouter Proxy)
 app.post('/api/agent', async (req, res) => {
     const { query } = req.body;
 
@@ -48,13 +48,12 @@ app.post('/api/agent', async (req, res) => {
         return res.status(400).json({ error: "Query is required" });
     }
 
-    if (!geminiService) {
+    if (!aiService) {
         return res.status(503).json({ error: "AI Service Unavailable. Check server logs." });
     }
 
     try {
-        const aiResponse = await geminiService.chat(query);
-        // Return structured for the frontend
+        const aiResponse = await aiService.chat(query);
         res.json({ response: aiResponse });
     } catch (error) {
         res.status(500).json({ error: "Internal Agent Error" });
