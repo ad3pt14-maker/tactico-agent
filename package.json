@@ -5,9 +5,24 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js",
+    "test": "playwright test"
   },
-  "keywords": ["ai", "football", "agent"],
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.41.0",
+    "@types/node": "^20.11.0"
+  },
+  "keywords": [
+    "ai",
+    "football",
+    "agent"
+  ],
   "author": "Tactico PM",
   "license": "ISC"
 }

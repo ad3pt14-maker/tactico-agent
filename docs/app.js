@@ -78,17 +78,13 @@ function addMessage(text, type) {
     outputDiv.scrollTop = outputDiv.scrollHeight;
 }
 
-function processDemoQuery(input) {
-    const q = input.toLowerCase();
+// Initialize the Agent
+const agent = new TacticoAgent();
 
-    // Mock Response for Demo
-    if (q.includes("yamal") || q.includes("lamine")) {
-        addMessage("<strong>Lamine Yamal (FCB)</strong><br>• xG/90: 0.35 (Elite)<br>• Value: €150m<br>• Trend: 📈 Rising", 'agent');
-    } else if (q.includes("salah")) {
-        addMessage("<strong>Mo Salah (LIV)</strong><br>• xG/90: 0.75 (World Class)<br>• Value: €55m<br>• Trend: ⚖️ Stable", 'agent');
-    } else if (q.includes("stats") || q.includes("scout")) {
-        addMessage("🔒 <strong>Upgrade Required</strong><br>Deep scouting queries are available in the Enterprise Plan.", 'agent');
-    } else {
-        addMessage("I'm in Demo Mode. Try asking me about <strong>Yamal</strong> or <strong>Salah</strong>.", 'agent');
-    }
+async function processDemoQuery(input) {
+    // Use the optimized Agent Class logic
+    const response = await agent.process(input);
+
+    // The agent now returns formatted HTML, so we pass 'agent' type to style it
+    addMessage(response, 'agent');
 }
