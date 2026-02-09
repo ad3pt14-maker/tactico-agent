@@ -4,10 +4,10 @@
  */
 
 // API base URL configuration
-// - localhost: use relative URL (same origin)
-// - GitHub Pages: use tunnel/deployed URL
+// - localhost/Render: use relative URL (same origin)
+// - GitHub Pages: use Render deployment
 const API_BASE_URL = window.location.hostname.includes('github.io')
-    ? 'https://fine-papers-fix.loca.lt'
+    ? 'https://tactico-agent.onrender.com'
     : '';
 
 class TacticoAgent {
