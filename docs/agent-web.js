@@ -3,12 +3,12 @@
  * Sends natural language queries to the Backend and displays the response.
  */
 
-// API base URL - change this when deploying
-// For local: leave empty (uses relative /api/agent)
-// For GitHub Pages: set to your tunnel/server URL
-const API_BASE_URL = window.location.hostname === 'localhost'
-    ? ''
-    : 'https://kind-shoes-worry.loca.lt';
+// API base URL configuration
+// - localhost/Render: use relative URL (same origin)
+// - GitHub Pages: use Render deployment URL
+const API_BASE_URL = window.location.hostname.includes('github.io')
+    ? 'https://tactico-agent.onrender.com'
+    : '';
 
 class TacticoAgent {
     constructor() {
